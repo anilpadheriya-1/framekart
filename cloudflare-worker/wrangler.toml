@@ -1,0 +1,29 @@
+name = "framekart-edge"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+compatibility_flags = []
+
+# Workers.dev endpoint (free, always on)
+workers_dev = true
+
+# ─── Environment variables (set secret values via: wrangler secret put BACKEND_URL)
+[vars]
+BACKEND_URL = "https://your-backend.railway.app"   # override with wrangler secret
+
+# ─── KV namespace for rate limiting
+# Create with: wrangler kv namespace create RL_KV
+# Then paste the id below
+[[kv_namespaces]]
+binding = "RL_KV"
+id = "22a3042625f04224895f59e3de9d6954"
+
+# ─── Production environment
+[env.production]
+vars = { BACKEND_URL = "https://your-backend.railway.app" }
+routes = [
+  { pattern = "framekart.app/*", zone_name = "framekart.app" },
+]
+
+# ─── Staging environment
+[env.staging]
+vars = { BACKEND_URL = "https://your-staging-backend.railway.app" }

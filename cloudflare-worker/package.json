@@ -1,0 +1,15 @@
+{
+  "name": "framekart-edge-worker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:production": "wrangler deploy --env production",
+    "kv:create": "wrangler kv namespace create RL_KV",
+    "secret:backend": "wrangler secret put BACKEND_URL"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
