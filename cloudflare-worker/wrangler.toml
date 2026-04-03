@@ -1,4 +1,4 @@
-name = "framekart-edge"
+name = "lensgigs-edge"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
 compatibility_flags = []
@@ -21,7 +21,7 @@ id = "22a3042625f04224895f59e3de9d6954"
 [env.production]
 vars = { BACKEND_URL = "https://your-backend.railway.app" }
 routes = [
-  { pattern = "framekart.app/*", zone_name = "framekart.app" },
+  { pattern = "lensgigs.app/*", zone_name = "lensgigs.app" },
 ]
 
 # ─── Staging environment

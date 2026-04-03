@@ -1,16 +1,16 @@
 #!/bin/bash
 # ============================================================
-# FrameKart — Push to GitHub
-# Run this once from the framekart/ project root
+# LensGigs — Push to GitHub
+# Run this once from the lensgigs/ project root
 # ============================================================
 
 set -e
 
-REPO_NAME="framekart"
+REPO_NAME="lensgigs"
 GITHUB_USER="anilpadheriya-1"   # your GitHub username
 
 echo ""
-echo "🚀 FrameKart — GitHub Push Script"
+echo "🚀 LensGigs — GitHub Push Script"
 echo "=================================="
 echo ""
 
@@ -45,12 +45,12 @@ echo "✅ .gitignore in place"
 
 # 5. Stage everything
 git add -A
-git commit -m "feat: initial FrameKart commit — full-stack visual arts marketplace
+git commit -m "feat: initial LensGigs commit — full-stack visual arts marketplace
 
 - FastAPI backend (Python) with JWT auth, MongoDB, Cloudinary, Razorpay
 - React 18 frontend with Tailwind CSS, dark theme, emerald accent  
 - Cloudflare Edge Worker with rate limiting + caching (KV: 22a3042625f04224895f59e3de9d6954)
-- Supabase analytics Edge Function (framekart-analytics) + fk_events table
+- Supabase analytics Edge Function (lensgigs-analytics) + fk_events table
 - 10 assets live on Cloudinary (cloud: dddgabu7o, folder: visualhub/)
 - Demo seed: 4 providers + 1 client auto-seeded on first boot
 - Docker Compose + Railway + Render deployment configs
@@ -91,8 +91,8 @@ echo ""
 echo "📌 What's live after push:"
 echo "  • GitHub:   https://github.com/$GITHUB_USER/$REPO_NAME"
 echo "  • Cloudinary assets: res.cloudinary.com/dddgabu7o (10 files)"  
-echo "  • Supabase analytics fn: https://bzabxhnovshznqqodvij.supabase.co/functions/v1/framekart-analytics"
-echo "  • Cloudflare KV: FRAMEKART_RL_KV (id: 22a3042625f04224895f59e3de9d6954)"
+echo "  • Supabase analytics fn: https://bzabxhnovshznqqodvij.supabase.co/functions/v1/lensgigs-analytics"
+echo "  • Cloudflare KV: LENSGIGS_RL_KV (id: 22a3042625f04224895f59e3de9d6954)"
 echo ""
 echo "📋 Next: Deploy backend to Railway, set env vars from backend/.env.example"
 echo ""

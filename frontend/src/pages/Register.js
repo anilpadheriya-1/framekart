@@ -36,7 +36,7 @@ export default function Register() {
           <div className="inline-flex items-center justify-center w-12 h-12 bg-emerald-500 rounded-2xl mb-4">
             <Camera size={22} className="text-black" />
           </div>
-          <h1 className="font-display text-3xl font-bold text-zinc-100 mb-1">Join FrameKart</h1>
+          <h1 className="font-display text-3xl font-bold text-zinc-100 mb-1">Join LensGigs</h1>
           <p className="text-zinc-500">India's premier visual arts marketplace</p>
         </div>
 

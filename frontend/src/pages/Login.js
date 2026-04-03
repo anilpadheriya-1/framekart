@@ -59,7 +59,7 @@ export default function Login() {
             <Camera size={22} className="text-black" />
           </div>
           <h1 className="font-display text-3xl font-bold text-zinc-100 mb-1">Welcome back</h1>
-          <p className="text-zinc-500">Sign in to your FrameKart account</p>
+          <p className="text-zinc-500">Sign in to your LensGigs account</p>
         </div>
 
         {/* Card */}

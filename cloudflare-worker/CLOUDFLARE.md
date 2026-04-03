@@ -1,10 +1,10 @@
-# FrameKart — Cloudflare Worker Deployment
+# LensGigs — Cloudflare Worker Deployment
 
 The edge worker (`cloudflare-worker/`) runs in front of your Railway/Render backend.
 It handles CORS, rate limiting, caching, and security headers at the edge — globally.
 
 ## What's already done for you
-- ✅ KV Namespace `FRAMEKART_RL_KV` created in your Cloudflare account
+- ✅ KV Namespace `LENSGIGS_RL_KV` created in your Cloudflare account
 - ✅ Namespace ID `22a3042625f04224895f59e3de9d6954` already set in `wrangler.toml`
 - ✅ Worker code written with rate limiting, caching, and security headers
 
@@ -30,21 +30,21 @@ npx wrangler secret put BACKEND_URL
 ### 4. Deploy
 ```bash
 npm run deploy
-# Worker URL: https://framekart-edge.<your-subdomain>.workers.dev
+# Worker URL: https://lensgigs-edge.<your-subdomain>.workers.dev
 ```
 
 ### 5. For production (with custom domain)
-After you register `framekart.app` (or your chosen domain):
+After you register `lensgigs.app` (or your chosen domain):
 ```bash
 # Add to wrangler.toml routes:
-# { pattern = "framekart.app/*", zone_name = "framekart.app" }
+# { pattern = "lensgigs.app/*", zone_name = "lensgigs.app" }
 npm run deploy:production
 ```
 
 ## Architecture with the Worker
 
 ```
-User → Cloudflare Edge Worker (framekart-edge)
+User → Cloudflare Edge Worker (lensgigs-edge)
               ↓
     [CORS] [Rate Limit] [Cache]
               ↓
@@ -69,10 +69,10 @@ User → Cloudflare Edge Worker (framekart-edge)
 | All other routes | Not cached |
 
 ## Environment variables in Cloudflare dashboard
-Go to Workers & Pages → framekart-edge → Settings → Variables:
+Go to Workers & Pages → lensgigs-edge → Settings → Variables:
 - `BACKEND_URL` = your Railway/Render backend URL
 
 ## KV Namespace
-Already created: `FRAMEKART_RL_KV`
+Already created: `LENSGIGS_RL_KV`
 ID: `22a3042625f04224895f59e3de9d6954`
 Used for: per-IP rate limit counters with automatic TTL expiry

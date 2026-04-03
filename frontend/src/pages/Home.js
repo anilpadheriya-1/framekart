@@ -145,7 +145,7 @@ export default function Home() {
               Are you a Visual Professional?
             </h2>
             <p className="text-zinc-400 text-lg mb-8">
-              Join FrameKart and reach thousands of clients across India. List your gigs for just ₹99/month.
+              Join LensGigs and reach thousands of clients across India. List your gigs for just ₹99/month.
             </p>
             <Link to="/subscription" className="btn-primary inline-flex items-center gap-2 text-base px-8 py-3">
               <Zap size={18} />

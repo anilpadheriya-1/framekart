@@ -1,5 +1,5 @@
 /**
- * FrameKart Figma UI Kit Generator
+ * LensGigs Figma UI Kit Generator
  *
  * HOW TO USE:
  * 1. Open any Figma file (or create a new one)
@@ -82,7 +82,7 @@ async function run() {
   // ─────────────────────────────────────────────────────────────────────────
   let cx = 0, cy = 0;
 
-  const swatchLabel = await text("FrameKart — Color System", 0, -50, 28, "Bold", TEXT);
+  const swatchLabel = await text("LensGigs — Color System", 0, -50, 28, "Bold", TEXT);
   page.appendChild(swatchLabel);
 
   const colors = [
@@ -412,7 +412,7 @@ async function run() {
 
   // ── Done ──────────────────────────────────────────────────────────────────
   figma.viewport.scrollAndZoomIntoView(page.children);
-  figma.closePlugin("✅ FrameKart UI Kit created successfully!");
+  figma.closePlugin("✅ LensGigs UI Kit created successfully!");
 }
 
 run().catch(err => figma.closePlugin("❌ Error: " + err.message));

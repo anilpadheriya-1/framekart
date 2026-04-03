@@ -1,4 +1,4 @@
-# FrameKart 📸
+# LensGigs 📸
 
 **India's premier marketplace for visual arts professionals** — photographers, videographers, drone operators, video editors, and album designers.
 
@@ -45,8 +45,8 @@
 ### 1. Clone & configure
 
 ```bash
-git clone https://github.com/your-username/framekart.git
-cd framekart
+git clone https://github.com/your-username/lensgigs.git
+cd lensgigs
 
 # Backend
 cp backend/.env.example backend/.env
@@ -170,7 +170,7 @@ All endpoints prefixed with `/api/`
 ## Project Structure
 
 ```
-framekart/
+lensgigs/
 ├── backend/
 │   ├── server.py          # All FastAPI routes + seed data
 │   ├── requirements.txt

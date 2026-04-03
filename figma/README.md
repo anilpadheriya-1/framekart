@@ -1,11 +1,11 @@
-# FrameKart — Figma UI Kit
+# LensGigs — Figma UI Kit
 
 ## How to generate the design file in 60 seconds
 
 1. Open Figma and create a new blank **Design** file
 2. Go to **Plugins → Development → Open Console** (or press Ctrl+Alt+I / Cmd+Option+I)
 3. Click the **"Run Script"** tab in the console
-4. Paste the entire contents of `framekart-ui-kit.js`
+4. Paste the entire contents of `lensgigs-ui-kit.js`
 5. Press **Enter / Run**
 
 The script will generate:

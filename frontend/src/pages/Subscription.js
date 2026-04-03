@@ -43,7 +43,7 @@ export default function Subscription() {
         // Dev mode: skip Razorpay, verify directly
         const { data } = await subscriptionAPI.verify({ mock: true });
         updateUser(data.user);
-        toast.success("Subscription activated! Welcome to FrameKart Pro 🎉");
+        toast.success("Subscription activated! Welcome to LensGigs Pro 🎉");
         navigate("/dashboard");
         return;
       }
@@ -60,7 +60,7 @@ export default function Subscription() {
         key: order.key,
         amount: order.amount,
         currency: "INR",
-        name: "FrameKart",
+        name: "LensGigs",
         description: "Provider Subscription — ₹99/month",
         order_id: order.order_id,
         prefill: { name: user.name, email: user.email },
@@ -69,7 +69,7 @@ export default function Subscription() {
           try {
             const { data } = await subscriptionAPI.verify(response);
             updateUser(data.user);
-            toast.success("Subscription activated! Welcome to FrameKart Pro 🎉");
+            toast.success("Subscription activated! Welcome to LensGigs Pro 🎉");
             navigate("/dashboard");
           } catch {
             toast.error("Payment verification failed. Contact support.");
@@ -92,7 +92,7 @@ export default function Subscription() {
           <Zap size={13} /> Provider Subscription
         </div>
         <h1 className="font-display text-4xl sm:text-5xl font-bold text-zinc-100 mb-4">
-          Start Earning on<br />FrameKart
+          Start Earning on<br />LensGigs
         </h1>
         <p className="text-zinc-400 text-lg max-w-xl mx-auto">
           List your photography, videography, and editing services. Reach thousands of clients across India.

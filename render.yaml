@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: framekart-backend
+    name: lensgigs-backend
     env: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt
@@ -31,7 +31,7 @@ services:
         sync: false
 
   - type: web
-    name: framekart-frontend
+    name: lensgigs-frontend
     env: static
     rootDir: frontend
     buildCommand: npm install && npm run build

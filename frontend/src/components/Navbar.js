@@ -57,7 +57,7 @@ export default function Navbar() {
               <Camera size={16} className="text-black" />
             </div>
             <span className="font-display font-bold text-lg text-zinc-100">
-              Frame<span className="text-emerald-400">Kart</span>
+              Lens<span className="text-emerald-400">Gigs</span>
             </span>
           </Link>
 

@@ -1,5 +1,5 @@
 """
-FrameKart Backend — FastAPI + MongoDB + Cloudinary + Razorpay
+LensGigs Backend — FastAPI + MongoDB + Cloudinary + Razorpay
 """
 import os, math, json, hmac, hashlib, asyncio, random, string
 from datetime import datetime, timedelta
@@ -29,7 +29,7 @@ load_dotenv()
 
 # ─── Config ────────────────────────────────────────────────────────────────
 MONGO_URI        = os.getenv("MONGO_URI", "mongodb://localhost:27017")
-DB_NAME          = os.getenv("DB_NAME", "framekart")
+DB_NAME          = os.getenv("DB_NAME", "lensgigs")
 JWT_SECRET       = os.getenv("JWT_SECRET", "change-me-in-production")
 JWT_ALGORITHM    = "HS256"
 ACCESS_TOKEN_EXP = 24        # hours
@@ -143,10 +143,10 @@ async def clear_attempts(email: str):
 
 # ─── Seed data ─────────────────────────────────────────────────────────────
 DEMO_PROVIDERS = [
-    {"name":"Arjun Mehta","email":"arjun@demo.com","city":"Mumbai","specialty":"Photography","bio":"10+ years of wedding & portrait photography. Shot 300+ weddings across India.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148700/framekart/avatars/demo-arjun.jpg"},
-    {"name":"Priya Sharma","email":"priya@demo.com","city":"Delhi","specialty":"Videography","bio":"Award-winning videographer. Cinematic wedding films that tell your story.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148705/framekart/avatars/demo-priya.jpg"},
-    {"name":"Ravi Kumar","email":"ravi@demo.com","city":"Bengaluru","specialty":"Drone","bio":"Licensed drone pilot with 5 years aerial photography experience. DGCA certified.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148708/framekart/avatars/demo-ravi.jpg"},
-    {"name":"Sneha Patel","email":"sneha@demo.com","city":"Ahmedabad","specialty":"Album Design","bio":"Creative album designer. Luxury wedding albums & photo books that last a lifetime.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148712/framekart/avatars/demo-sneha.jpg"},
+    {"name":"Arjun Mehta","email":"arjun@demo.com","city":"Mumbai","specialty":"Photography","bio":"10+ years of wedding & portrait photography. Shot 300+ weddings across India.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148700/lensgigs/avatars/demo-arjun.jpg"},
+    {"name":"Priya Sharma","email":"priya@demo.com","city":"Delhi","specialty":"Videography","bio":"Award-winning videographer. Cinematic wedding films that tell your story.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148705/lensgigs/avatars/demo-priya.jpg"},
+    {"name":"Ravi Kumar","email":"ravi@demo.com","city":"Bengaluru","specialty":"Drone","bio":"Licensed drone pilot with 5 years aerial photography experience. DGCA certified.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148708/lensgigs/avatars/demo-ravi.jpg"},
+    {"name":"Sneha Patel","email":"sneha@demo.com","city":"Ahmedabad","specialty":"Album Design","bio":"Creative album designer. Luxury wedding albums & photo books that last a lifetime.","avatar":"https://res.cloudinary.com/dddgabu7o/image/upload/v1775148712/lensgigs/avatars/demo-sneha.jpg"},
 ]
 
 DEMO_GIGS = [
@@ -189,12 +189,12 @@ async def seed_demo_data():
     await users_col.insert_one(client)
 
     placeholder_images = [
-        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775121546/framekart/gigs/wedding-photography-1.jpg",
-        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148672/framekart/gigs/videography-wedding-1.jpg",
-        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148677/framekart/gigs/drone-aerial-1.jpg",
-        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148681/framekart/gigs/album-design-1.jpg",
-        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148688/framekart/gigs/video-editing-reels-1.jpg",
-        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148692/framekart/gigs/corporate-event-photography-1.jpg",
+        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775121546/lensgigs/gigs/wedding-photography-1.jpg",
+        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148672/lensgigs/gigs/videography-wedding-1.jpg",
+        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148677/lensgigs/gigs/drone-aerial-1.jpg",
+        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148681/lensgigs/gigs/album-design-1.jpg",
+        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148688/lensgigs/gigs/video-editing-reels-1.jpg",
+        "https://res.cloudinary.com/dddgabu7o/image/upload/v1775148692/lensgigs/gigs/corporate-event-photography-1.jpg",
     ]
     for i, g in enumerate(DEMO_GIGS):
         pid = provider_ids[i % len(provider_ids)]
@@ -223,7 +223,7 @@ async def lifespan(app: FastAPI):
     await gigs_col.create_index([("title","text"),("tags","text")])
     yield
 
-app = FastAPI(title="FrameKart API", lifespan=lifespan)
+app = FastAPI(title="LensGigs API", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
@@ -377,7 +377,7 @@ async def update_profile(body: ProfileUpdate, current_user=Depends(get_current_u
 @app.post("/api/users/avatar")
 async def upload_avatar(file: UploadFile = File(...), current_user=Depends(get_current_user)):
     data = await file.read()
-    result = cloudinary.uploader.upload(data, folder="framekart/avatars", resource_type="image")
+    result = cloudinary.uploader.upload(data, folder="lensgigs/avatars", resource_type="image")
     await users_col.update_one({"_id": ObjectId(current_user["id"])}, {"$set": {"avatar": result["secure_url"]}})
     return {"avatar": result["secure_url"]}
 
@@ -506,7 +506,7 @@ async def upload_gig_image(gig_id: str, file: UploadFile = File(...), current_us
     if not gig: raise HTTPException(404, "Gig not found")
     if str(gig["provider_id"]) != current_user["id"]: raise HTTPException(403, "Not your gig")
     data = await file.read()
-    result = cloudinary.uploader.upload(data, folder="framekart/gigs", resource_type="image")
+    result = cloudinary.uploader.upload(data, folder="lensgigs/gigs", resource_type="image")
     await gigs_col.update_one({"_id": ObjectId(gig_id)}, {"$push": {"images": result["secure_url"]}})
     return {"url": result["secure_url"]}
 
@@ -794,15 +794,15 @@ async def health():
 import asyncio
 
 ANALYTICS_URL = os.getenv("SUPABASE_ANALYTICS_URL",
-    "https://bzabxhnovshznqqodvij.supabase.co/functions/v1/framekart-analytics")
-ANALYTICS_SECRET = os.getenv("FRAMEKART_ANALYTICS_SECRET", "")
+    "https://bzabxhnovshznqqodvij.supabase.co/functions/v1/lensgigs-analytics")
+ANALYTICS_SECRET = os.getenv("LENSGIGS_ANALYTICS_SECRET", "")
 
 async def track(event: str, payload: dict):
     """Fire-and-forget analytics event to Supabase Edge Function."""
     try:
         headers = {"Content-Type": "application/json"}
         if ANALYTICS_SECRET:
-            headers["X-FrameKart-Secret"] = ANALYTICS_SECRET
+            headers["X-LensGigs-Secret"] = ANALYTICS_SECRET
         async with httpx.AsyncClient(timeout=3.0) as hc:
             await hc.post(ANALYTICS_URL, json={
                 "event": event,

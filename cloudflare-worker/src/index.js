@@ -1,5 +1,5 @@
 /**
- * FrameKart Edge Worker
+ * LensGigs Edge Worker
  * Cloudflare Worker that sits in front of the FastAPI backend.
  *
  * Features:
@@ -13,10 +13,10 @@
 // ─── Config ────────────────────────────────────────────────────────────────
 const BACKEND_URL = "https://your-backend.railway.app"; // ← set in Worker env vars
 const ALLOWED_ORIGINS = [
-  "https://framekart.app",
-  "https://framekart.co.in",
-  "https://framekart.studio",
-  "https://framekartindia.com",
+  "https://lensgigs.app",
+  "https://lensgigs.co.in",
+  "https://lensgigs.studio",
+  "https://lensgigsindia.com",
   "http://localhost:3000",
 ];
 
