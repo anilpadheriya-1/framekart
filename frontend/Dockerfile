@@ -8,4 +8,4 @@ ENV REACT_APP_API_URL=$REACT_APP_API_URL
 RUN npm run build
 RUN npm install -g serve
 EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "$PORT"]
+CMD ["serve", "-s", "build", "-p", "3000"]
