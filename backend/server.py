@@ -787,7 +787,11 @@ async def verify_subscription(request: Request, current_user=Depends(get_current
 
 @app.get("/api/health")
 async def health():
-    return {"status": "ok", "time": datetime.utcnow().isoformat()}
+    try:
+        await db.command('ping')
+        return {"status": "ok", "database": "connected", "time": datetime.utcnow().isoformat()}
+    except Exception as e:
+        raise HTTPException(503, {"status": "error", "message": "Database connection failed"})
 
 
 # ─── Analytics webhook (fire-and-forget to Supabase Edge Function) ──────────
